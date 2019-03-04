@@ -8,5 +8,8 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/rureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  # 服务注册不上时，不剔除某个节点， 这个禁止关闭(false)
+  server:
+    enable-self-preservation: true
 
