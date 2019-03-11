@@ -9,7 +9,7 @@ import net.xdclass.order_service.domain.ProductOrder;
 public interface ProductOrderService {
 
     /**
-     * 下单接口
+     * ribbon下单接口
      * @param userId
      * @param productId
      * @return
@@ -17,11 +17,19 @@ public interface ProductOrderService {
     ProductOrder save(int userId, int productId);
 
     /**
-     * 下单接口
+     * ribbon下单接口
      * @param userId
      * @param productId
      * @return
      */
     ProductOrder save2(int userId, int productId);
+
+    /**
+     * feign下单接口
+     * @param userId
+     * @param productId
+     * @return
+     */
+    ProductOrder save3(int userId, int productId);
 
 }
