@@ -75,9 +75,15 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 
     @Override
     public ProductOrder save3(int userId, int productId) {
+
+        // 调用订单服务
         String response = productClient.findById(productId);
+
+        // 调用用户服务，主要是获取用户名称，用户的级别或者积分信息
+
         JsonNode jsonNode = JsonUtils.str2JsonNode(response);
         ProductOrder productOrder = new ProductOrder();
+        productOrder.setId(jsonNode.get("id").asInt());
         productOrder.setCreateTime(new Date());
         productOrder.setUserId(userId);
         productOrder.setTradeNo(UUID.randomUUID().toString());
