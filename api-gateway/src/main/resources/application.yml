@@ -21,3 +21,5 @@ zuul:
     ignored-services: /*-service/**
   # 忽略整个服务 不对外提供接口
   # ignored-services: /*-service/**
+  # http 请求头过滤问题
+  sensitive-headers:
