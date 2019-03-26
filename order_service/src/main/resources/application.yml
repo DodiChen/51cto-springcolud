@@ -1,6 +1,5 @@
-
 server:
-  port: 8781
+  port: 9999
 
 # 指定注册中心地址
 eureka:
@@ -16,8 +15,7 @@ spring:
     database: 3
     host: 172.23.0.108
     port: 6379
-    timeout: 20000
-
+    timeout: 2000
 
 # 自定义负载均衡器
 product-service:

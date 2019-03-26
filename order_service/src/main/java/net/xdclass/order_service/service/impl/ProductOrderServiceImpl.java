@@ -5,6 +5,8 @@ import net.xdclass.order_service.domain.ProductOrder;
 import net.xdclass.order_service.service.ProductClient;
 import net.xdclass.order_service.service.ProductOrderService;
 import net.xdclass.order_service.utils.JsonUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -21,6 +23,8 @@ import java.util.UUID;
  */
 @Service
 public class ProductOrderServiceImpl implements ProductOrderService {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private RestTemplate restTemplate;
@@ -80,7 +84,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
         String response = productClient.findById(productId);
 
         // 调用用户服务，主要是获取用户名称，用户的级别或者积分信息
-
+        logger.info("");
         JsonNode jsonNode = JsonUtils.str2JsonNode(response);
         ProductOrder productOrder = new ProductOrder();
         productOrder.setId(jsonNode.get("id").asInt());
