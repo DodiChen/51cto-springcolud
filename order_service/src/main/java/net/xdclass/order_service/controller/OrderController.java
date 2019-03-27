@@ -46,7 +46,7 @@ public class OrderController {
 
     private Object saveOrderFail(int userId, int productId, HttpServletRequest request){
 
-        String saveOrderKey = "save-order";
+        /*String saveOrderKey = "save-order";
         String sendValue = (String) redisTemplate.opsForValue().get(saveOrderKey);
         String ip = request.getRemoteUser();
         // 避免阻塞
@@ -59,7 +59,7 @@ public class OrderController {
             }else{
                 System.out.println("已经发送过短信， 20s内不重复发送");
             }
-        }).start();
+        }).start();*/
 
         Map<String, Object> msg = new HashMap<String, Object>();
         msg.put("code", "-1");
