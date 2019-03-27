@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/chen_vs_dong/config_cloud
+          username: chen_vs_dong@163.com
+          password: skyfly19930508
+          # 超时时间
+          timeout: 5
+          default-label: master
+
+# 服务端口号
+server:
+  port: 9100
+
+#指定注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
