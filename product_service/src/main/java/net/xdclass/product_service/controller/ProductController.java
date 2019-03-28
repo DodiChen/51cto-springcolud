@@ -5,6 +5,7 @@ import net.xdclass.product_service.service.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,11 +16,15 @@ import java.util.concurrent.TimeUnit;
  * @date 2019/3/3 21:58
  */
 @RestController
+@RefreshScope
 @RequestMapping("/api/v1/product")
 public class ProductController {
 
     @Value("${server.port}")
     private String port;
+
+    @Value("${env}")
+    private String env;
 
     @Autowired
     public ProductService productService;
@@ -41,15 +46,15 @@ public class ProductController {
      */
     @RequestMapping("/find")
     public Object findById(int id){
-        try {
+        /*try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         Product product = productService.findById(id);
         Product result = new Product();
         BeanUtils.copyProperties(product, result);
-        result.setName(result.getName() + " data from port=" + port);
+        result.setName(result.getName() + " data from port=" + port + " env = " + env);
         return result;
     }
 }
